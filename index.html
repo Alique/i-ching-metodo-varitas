@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>I-Ching Yarrow Cast Demo</title>
+	<meta name="generator" content="BBEdit 11.0" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="yarrow-sort.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" style="background-color:#F8F8F8;" class="text-center">
+<h1>El método de las varitas</h1>
+<p>===&nbsp;o&nbsp;=== : Yang cambiando a Ying</p>
+<p>====x==== : Ying cambiando a Yang</p>
+<p>========= : Yang que no cambia</p>
+<p>===&nbsp;&nbsp;&nbsp;=== : Ying que no cambia</p>
+<div id="Hexagram" class="text-center"></div>
+<button type="button" id="countButton" class="cast">Click Acá para formar el Hexagrama</button>
+<button type="button" id="refreshButton" class="refresh">Click Acá para formar un nuevo Hexagrama</button>
+</div> <!-- Content -->
+</div> <!-- Row -->
+</div> <!-- Container -->
+<script>
+	$('body').on('click', '.cast', function(e) 
+		{
+		LineCast();		
+		$('<code>'+asciipic+'</code><br />').prependTo('#Hexagram');
+		
+		});	
+		var count = 0;
+
+		/*Cuenta el Hexagrama y refresca el navegador.*/
+			var countButton = document.getElementById("countButton");
+			var refreshButton = document.getElementById("refreshButton");
+			refreshButton.style.display = "none";
+			countButton.onclick = function(){
+			count++;
+				if(count===6){
+					countButton.style.display = "none";
+					alert("Su hexagrama se ha completado");
+					refreshButton.style.display = "block";
+					refreshButton.onclick = function(){
+						location.reload()
+					}
+				} 
+			}
+</script>
+</body>
+</html>
